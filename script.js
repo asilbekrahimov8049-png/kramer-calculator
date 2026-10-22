@@ -1,5 +1,5 @@
 const MIN_SIZE = 2;
-const MAX_SIZE = 6;
+const MAX_SIZE = 10;
 
 const form = document.querySelector('#calculator-form');
 const sizeOutput = document.querySelector('#matrix-size');
@@ -8,6 +8,8 @@ const resultsSection = document.querySelector('#results');
 const message = document.querySelector('#form-message');
 const decreaseButton = document.querySelector('#decrease-size');
 const increaseButton = document.querySelector('#increase-size');
+const copyLinkButton = document.querySelector('#copy-link-button');
+const shareLinkStatus = document.querySelector('#share-link-status');
 
 let matrixSize = 3;
 
@@ -48,7 +50,7 @@ function createMatrix() {
   matrixArea.innerHTML = `
     <div class="matrix-caption"><strong>Koeffitsiyentlar matritsasi</strong><span>Kasr va o‘nlik sonlar qabul qilinadi</span></div>
     <div class="matrix-table-wrap">
-      <table class="matrix-table">
+      <table class="matrix-table" style="--column-count: ${matrixSize + 2}">
         <thead><tr><th scope="col">№</th>${headerCells}<th scope="col">b</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
@@ -74,6 +76,22 @@ function clearMessage() {
 function showMessage(text) {
   message.textContent = text;
   message.hidden = false;
+}
+
+async function copyPageLink() {
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    shareLinkStatus.textContent = 'Sayt hali internetga joylanmagan. Boshqalar ochishi uchun avval uni internetga joylash kerak.';
+    return;
+  }
+
+  const shareUrl = `${window.location.origin}${window.location.pathname}${window.location.search}`;
+  try {
+    await navigator.clipboard.writeText(shareUrl);
+    shareLinkStatus.textContent = 'Link nusxalandi. Endi Telegram yoki Instagramga yuborishingiz mumkin.';
+  } catch (error) {
+    shareLinkStatus.textContent = 'Linkni nusxalab bo‘lmadi. Brauzer ruxsatlarini tekshirib qayta urinib ko‘ring.';
+    console.error('Sahifa linkini clipboardga nusxalashda xatolik:', error);
+  }
 }
 
 function determinant(matrix) {
@@ -212,6 +230,7 @@ increaseButton.addEventListener('click', () => {
 });
 
 document.querySelector('#generate-button').addEventListener('click', createMatrix);
+copyLinkButton.addEventListener('click', copyPageLink);
 document.querySelector('#clear-button').addEventListener('click', () => {
   createMatrix();
   matrixArea.querySelector('.matrix-input')?.focus();

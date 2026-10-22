@@ -314,8 +314,10 @@ h1 span { color: #3886df; }
 .hero-description { max-width: 500px; margin: 0; color: #687e94; font-size: 15px; line-height: 1.7; }
 .title-link { color: inherit; text-decoration: none; transition: color .2s ease; }
 .title-link:hover, .title-link:focus-visible { color: #2d79db; }
-.inline-link-button { display: inline-flex; align-items: center; justify-content: center; margin-top: 18px; padding: 11px 18px; border-radius: 999px; background: linear-gradient(135deg, #eef7ff, #dfeeff); border: 1px solid rgba(99, 148, 220, 0.35); color: #1d4f8b; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.08); }
+.share-link { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.inline-link-button { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 999px; background: linear-gradient(135deg, #eef7ff, #dfeeff); border: 1px solid rgba(99, 148, 220, 0.35); color: #1d4f8b; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.08); }
 .inline-link-button:hover { transform: translateY(-1px); }
+.share-link-status { color: #426581; font-size: 11px; line-height: 1.5; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .action-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
 .action-link:hover { transform: translateY(-1px); }
@@ -353,10 +355,9 @@ h1 span { color: #3886df; }
 .matrix-caption { display: flex; align-items: center; justify-content: space-between; margin: 0 0 12px; color: #8295a9; font-size: 10px; }
 .matrix-caption strong { color: #53728e; font-weight: 600; }
 .matrix-table-wrap { overflow-x: auto; padding-bottom: 2px; }
-.matrix-table { width: 100%; border-collapse: separate; border-spacing: 5px 6px; table-layout: fixed; }
+.matrix-table { width: 100%; min-width: max(340px, calc(var(--column-count) * 48px)); border-collapse: separate; border-spacing: 5px 6px; table-layout: fixed; }
 .matrix-table th { padding: 0 0 4px; color: #8094a8; font-size: 10px; font-weight: 600; text-align: center; }
 .matrix-table th:first-child { width: 26px; }
-.matrix-table th:last-child { width: 56px; }
 .matrix-table td { padding: 0; text-align: center; }
 .row-label { color: #9aabba; font: 600 10px 'Manrope', sans-serif; }
 .matrix-input { width: 100%; min-width: 42px; height: 37px; padding: 0 5px; border: 1px solid #dce8f3; border-radius: 8px; color: #234766; background: rgba(255,255,255,.95); text-align: center; font-size: 13px; transition: border-color .2s, box-shadow .2s, background .2s; }
@@ -365,8 +366,6 @@ input[type="number"].matrix-input { width: 100%; height: 37px; padding: 0 5px; b
 .matrix-input:focus { border-color: #66a6e8; outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(67,143,217,.12); }
 input[type="number"].matrix-input:focus { border-color: #66a6e8; outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(67,143,217,.12); }
 .matrix-input::placeholder { color: #bdcbd8; }
-.matrix-input.b-input { background: #f2f8ff; border-color: #cfe2f5; }
-input[type="number"].matrix-input.b-input { background: #f2f8ff; border-color: #cfe2f5; }
 .form-message { margin-top: 12px; padding: 11px 13px; border: 1px solid #f5d2ce; border-radius: 9px; color: #a94338; background: #fff7f6; font-size: 12px; line-height: 1.5; }
 .form-actions { display: flex; align-items: center; gap: 10px; padding-top: 17px; }
 .button-primary { min-width: 128px; color: #fff; background: linear-gradient(120deg,#3889e5,#236bc8); box-shadow: 0 8px 18px rgba(39,113,202,.2); }
@@ -463,7 +462,6 @@ input[type="number"].matrix-input.b-input { background: #f2f8ff; border-color: #
     .matrix-area { padding: 12px 8px; }
     .matrix-table { min-width: 340px; border-spacing: 4px 6px; }
     .matrix-table th:first-child { width: 22px; }
-    .matrix-table th:last-child { width: 47px; }
     input[type="number"].matrix-input { height: 35px; font-size: 12px; }
     .form-actions { flex-wrap: wrap; }
     .button-primary { min-width: 112px; }
