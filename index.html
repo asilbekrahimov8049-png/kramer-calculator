@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edf6ff">
+  <meta name="description" content="Chiziqli tenglamalar sistemasini Kramer usuli orqali yeching.">
+  <title>Kramer Usuli Kalkulyatori | Matematik Yechimlar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Matematik yechimlar bosh sahifasi">
+        <span class="brand-mark" aria-hidden="true">∑</span>
+        <span>MATEMATIK YECHIMLAR</span>
+      </a>
+      <span class="header-note"><span class="status-dot"></span> Brauzerda ishlaydi</span>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Chiziqli algebra · Interaktiv vosita</p>
+          <h1 id="page-title"><a class="title-link" href="#about">Kramer Usuli</a> <span>Kalkulyatori</span></h1>
+          <p class="hero-description">Chiziqli tenglamalar sistemasini determinantlar orqali tez va aniq yeching.</p>
+          <div class="hero-actions" aria-label="Sahifa navigatsiyasi">
+            <a class="action-link primary" href="#calculator">Boshlash</a>
+            <a class="action-link secondary" href="#how">Qanday ishlaydi?</a>
+          </div>
+          <a class="inline-link-button" href="https://www.wikipedia.org/wiki/Kramer%27s_rule" target="_blank" rel="noopener noreferrer">Kramer usliga o‘tish</a>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <span class="hero-mark-label">DETERMINANT</span>
+          <span class="det-symbol">|A|</span>
+          <span class="hero-mark-caption">A · x = b</span>
+        </div>
+      </section>
+
+      <section id="calculator" class="workspace" aria-label="Tenglamalar kalkulyatori">
+        <div class="calculator-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">KALKULYATOR</p>
+              <h2>Sistemani kiriting</h2>
+            </div>
+            <span class="step-counter">01 <span>/ 03</span></span>
+          </div>
+
+          <form id="calculator-form" novalidate>
+            <div class="size-control">
+              <div class="size-label-group">
+                <label for="matrix-size">Noma’lumlar soni</label>
+                <span class="field-hint">2 dan 6 gacha</span>
+              </div>
+              <div class="size-actions">
+                <div class="stepper" aria-label="Noma’lumlar sonini tanlang">
+                  <button class="stepper-button" id="decrease-size" type="button" aria-label="Noma’lumlar sonini kamaytirish">−</button>
+                  <output id="matrix-size" class="stepper-value" aria-live="polite">3</output>
+                  <button class="stepper-button" id="increase-size" type="button" aria-label="Noma’lumlar sonini oshirish">+</button>
+                </div>
+                <button class="button button-secondary" id="generate-button" type="button">Jadval yaratish <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+
+            <div id="matrix-area" class="matrix-area" aria-live="polite"></div>
+            <div id="form-message" class="form-message" role="alert" hidden></div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit"><span class="play-icon" aria-hidden="true">▶</span> Yechish</button>
+              <button class="button button-quiet" id="clear-button" type="button"><span aria-hidden="true">↺</span> Tozalash</button>
+              <span class="keyboard-hint">Enter <span>→</span> yechish</span>
+            </div>
+          </form>
+        </div>
+
+        <aside class="side-note" aria-label="Yechish tartibi">
+          <div class="side-note-icon" aria-hidden="true">✳</div>
+          <p class="section-kicker">ANIQLIK BILAN HISOBLANG</p>
+          <p class="side-note-copy">Har bir koeffitsiyentni kiriting. Qolganini kalkulyator hisoblaydi.</p>
+          <div class="side-divider"></div>
+          <div class="mini-stat"><span>Qo‘llab-quvvatlanadi</span><strong>2–6 × 2–6</strong></div>
+          <div class="mini-stat"><span>Hisoblash usuli</span><strong>Kramer qoidasi</strong></div>
+        </aside>
+      </section>
+
+      <section id="results" class="results-section" aria-live="polite" hidden></section>
+
+      <section id="how" class="how-section" aria-labelledby="how-title">
+        <div class="section-intro">
+          <p class="section-kicker">SODDA VA TUSHUNARLI</p>
+          <h2 id="how-title">Qanday ishlaydi?</h2>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <div><h3>Sistemani kiriting</h3><p>Noma’lumlar sonini tanlab, koeffitsiyentlarni jadvalga yozing.</p></div>
+          </article>
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <div><h3>Determinantlarni hisoblang</h3><p>Asosiy D va har bir noma’lum uchun Dᵢ avtomatik topiladi.</p></div>
+          </article>
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <div><h3>Natijani oling</h3><p>Yechimlar aniqlik bilan, alohida natija kartalarida ko‘rsatiladi.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="section-kicker">NAZARIY QISQA</p>
+          <h2 id="about-title">Kramer usuli nima?</h2>
+          <p>Kramer usuli — kvadrat chiziqli tenglamalar sistemasini determinantlar yordamida yechish usuli. U yagona yechim mavjud bo‘lishi uchun asosiy determinant nolga teng bo‘lmasligini talab qiladi.</p>
+        </div>
+        <div class="formula-panel" aria-label="Kramer formulasi: x i teng D i bo‘lingan D">
+          <span class="formula-label">KRAMER FORMULASI</span>
+          <div class="formula">x<sub>i</sub> = <span class="fraction"><span>D<sub>i</sub></span><span>D</span></span>, <span class="formula-condition">D ≠ 0</span></div>
+          <p class="formula-caption">Dᵢ — i-ustun b vektori bilan almashtirilgan determinant</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Kramer Usuli Kalkulyatori</span>
+      <span>HTML <i>•</i> CSS <i>•</i> JavaScript</span>
+    </footer>
+  </div>
+</body>
+</html>
